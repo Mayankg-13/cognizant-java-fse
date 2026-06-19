@@ -72,3 +72,15 @@ This repository contains exercises completed as part of the Cognizant Java Full 
 - **Output Screenshot:**
   ![Financial Forecasting Output](./week%201/FinancialForecasting/forecasting_win.png)
 
+### Week 2 - PL/SQL
+
+#### [Exercise 1: Control Structures](./week 2/ControlStructures)
+- **Scenario:** Implement control structures to apply discounts, update customer statuses, and generate reminders.
+  - **Scenario 1:** Loop through all customers and apply a 1% discount to loan interest rates for customers over 60 years old.
+  - **Scenario 2:** Iterate through customers and set `IsVIP` to `'TRUE'` for those with a balance over $10,000.
+  - **Scenario 3:** Fetch loans due in the next 30 days and print reminder messages.
+- **How to Execute:**
+  - Run `schema.sql` to initialize the database tables and insert sample records.
+  - Run the anonymous blocks `Scenario1.sql`, `Scenario2.sql`, and `Scenario3.sql` in your Oracle SQL client.
+- **Output Screenshot:**
+  ![Control Structures Output](./week%202/ControlStructures/control_structures_win.png)
