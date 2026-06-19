@@ -15,7 +15,7 @@ This repository contains exercises completed as part of the Cognizant Java Full 
   - **Reflection Guard** in the constructor to protect against reflection-based instantiations.
 - **How to Compile and Run:**
   ```powershell
-  cd week 1/SingletonPatternExample/src
+  cd week 1/SingletonPatternExample
   javac Logger.java SingletonTest.java
   java SingletonTest
   ```
