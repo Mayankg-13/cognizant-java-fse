@@ -13,4 +13,4 @@ java FactoryMethodTest
 ```
 
 ## 3. Execution Output Screenshot
-![Factory Method Test Output](./factory_output.png)
+![Factory Method Test Output](./factory_win.png)

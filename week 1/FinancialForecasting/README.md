@@ -30,5 +30,5 @@ To optimize the recursive solution and avoid excessive computation or resource c
 2. **Iterative Approach:** By replacing the recursive call stack with a simple `for` loop, we reduce auxiliary space complexity from $O(N)$ to $O(1)$. This prevents `StackOverflowError` and runs faster in practice because it avoids the overhead of method call stack frames.
 
 ## 5. Execution Output Screenshot
-![Financial Forecasting Output](./forecasting_output.png)
+![Financial Forecasting Output](./forecasting_win.png)
 

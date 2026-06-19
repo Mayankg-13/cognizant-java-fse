@@ -22,5 +22,5 @@ For an e-commerce platform containing hundreds of thousands of products:
 * **Why:** Linear search takes time proportional to the number of products (O(N)). Searching a catalog of 1,000,000 products could require up to 1,000,000 checks. Binary search, operating at O(log N), requires a maximum of only 20 checks for the same catalog. Because e-commerce platforms are read-heavy (users search items continuously while the product inventory changes less frequently), the one-time cost of sorting the product array is vastly outweighed by the instantaneous search times provided by binary search.
 
 ## 4. Execution Output Screenshot
-![Search Test Output](./search_output.png)
+![Search Test Output](./search_win.png)
 

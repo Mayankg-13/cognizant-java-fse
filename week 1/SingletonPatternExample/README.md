@@ -13,4 +13,4 @@ java SingletonTest
 ```
 
 ## 3. Execution Output Screenshot
-![Singleton Test Output](./singleton_output.png)
+![Singleton Test Output](./singleton_win.png)
