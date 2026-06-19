@@ -19,3 +19,18 @@ This repository contains exercises completed as part of the Cognizant Java Full 
   javac Logger.java SingletonTest.java
   java SingletonTest
   ```
+
+#### [Exercise 2: Implementing the Factory Method Pattern](./week 1/FactoryMethodPatternExample)
+- **Scenario:** Develop a document management system that creates different types of documents (e.g., Word, PDF, Excel) using the Factory Method pattern.
+- **Implementation Details:**
+  - **Document interface** declaring common operations: `open()`, `save()`, and `close()`.
+  - **Concrete Documents** (`WordDocument`, `PdfDocument`, `ExcelDocument`) implementing specific behaviors for each document type.
+  - **Abstract DocumentFactory** declaring the creator method `createDocument()`.
+  - **Concrete Factories** (`WordDocumentFactory`, `PdfDocumentFactory`, `ExcelDocumentFactory`) overriding `createDocument()` to return instances of their respective documents.
+- **How to Compile and Run:**
+  ```powershell
+  cd week 1/FactoryMethodPatternExample
+  javac *.java
+  java FactoryMethodTest
+  ```
+
