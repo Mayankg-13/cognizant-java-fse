@@ -6,7 +6,7 @@ This repository contains exercises completed as part of the Cognizant Java Full 
 
 ### Creational Design Patterns
 
-#### [Exercise 1: Implementing the Singleton Pattern](./Week_1_Design_Patterns/SingletonPatternExample)
+#### [Exercise 1: Implementing the Singleton Pattern](./week 1/SingletonPatternExample)
 - **Scenario:** Ensure a logging utility class (`Logger`) has only one instance throughout the application lifecycle to ensure consistent logging.
 - **Implementation Details:**
   - **Private constructor** to prevent external instantiation.
@@ -15,7 +15,7 @@ This repository contains exercises completed as part of the Cognizant Java Full 
   - **Reflection Guard** in the constructor to protect against reflection-based instantiations.
 - **How to Compile and Run:**
   ```powershell
-  cd Week_1_Design_Patterns/SingletonPatternExample/src
+  cd week 1/SingletonPatternExample/src
   javac Logger.java SingletonTest.java
   java SingletonTest
   ```
