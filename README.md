@@ -84,3 +84,14 @@ This repository contains exercises completed as part of the Cognizant Java Full 
   - Run the anonymous blocks `Scenario1.sql`, `Scenario2.sql`, and `Scenario3.sql` in your Oracle SQL client.
 - Output Screenshot:
   ![Control Structures Output](./week%201/ControlStructures/control_structures_win.png)
+
+#### [Exercise 3: Stored Procedures](./week 1/StoredProcedures)
+- **Scenario:** Implement stored procedures to apply monthly interest to savings accounts, apply departmental employee bonuses, and securely transfer funds between accounts.
+  - Scenario 1: Write a stored procedure `ProcessMonthlyInterest` that updates all savings account balances by adding 1% interest.
+  - Scenario 2: Write a stored procedure `UpdateEmployeeBonus` that updates employee salaries in a given department by a given percentage parameter.
+  - Scenario 3: Write a stored procedure `TransferFunds` that transfers a specified amount between two accounts, validating balances and ensuring safe concurrency.
+- **How to Execute:**
+  - Run `schema.sql` to initialize the database tables and insert sample records.
+  - Run the scripts `Scenario1.sql`, `Scenario2.sql`, and `Scenario3.sql` in your Oracle SQL client.
+- **Output Screenshot:**
+  ![Stored Procedures Output](./week%201/StoredProcedures/stored_procedures_win.png)
