@@ -45,7 +45,22 @@ This repository contains exercises completed as part of the Cognizant Java Full 
   - **Big O & Suitability analysis** documented in the project's folder.
 - **How to Compile and Run:**
   ```powershell
-  cd week 1/ECommercePlatformSearch
+  cd "week 1/ECommercePlatformSearch"
   javac *.java
   java SearchTest
   ```
+
+#### [Exercise 7: Financial Forecasting](./week 1/FinancialForecasting)
+- **Scenario:** Develop a financial forecasting tool that predicts future values based on past growth rates using recursive and optimized approaches.
+- **Implementation Details:**
+  - **Naive Recursion** to project future value based on constant growth rate.
+  - **Memoized Recursion** to optimize calculations using an array cache.
+  - **Iterative Approach** to calculate values in $O(1)$ auxiliary space, avoiding call stack limitations.
+  - **Varying Growth Rates** implementation recursively mapping sequential historical growth rates to projected values.
+- **How to Compile and Run:**
+  ```powershell
+  cd "week 1/FinancialForecasting"
+  javac *.java
+  java ForecastingTest
+  ```
+
