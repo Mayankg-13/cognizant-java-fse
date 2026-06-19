@@ -34,3 +34,18 @@ This repository contains exercises completed as part of the Cognizant Java Full 
   java FactoryMethodTest
   ```
 
+### Data Structures and Algorithms
+
+#### [Exercise 2: E-commerce Platform Search Function](./week 1/ECommercePlatformSearch)
+- **Scenario:** Optimize the search functionality of an e-commerce platform for fast performance by implementing Linear and Binary Search.
+- **Implementation Details:**
+  - **Product class** defining search attributes: `productId`, `productName`, and `category`.
+  - **Linear Search** matching target product IDs sequentially in O(N) worst-case complexity.
+  - **Binary Search** matching target product IDs on a sorted array in O(log N) worst-case complexity.
+  - **Big O & Suitability analysis** documented in the project's folder.
+- **How to Compile and Run:**
+  ```powershell
+  cd week 1/ECommercePlatformSearch
+  javac *.java
+  java SearchTest
+  ```
