@@ -15,10 +15,12 @@ This repository contains exercises completed as part of the Cognizant Java Full 
   - **Reflection Guard** in the constructor to protect against reflection-based instantiations.
 - **How to Compile and Run:**
   ```powershell
-  cd week 1/SingletonPatternExample
+  cd "week 1/SingletonPatternExample"
   javac Logger.java SingletonTest.java
   java SingletonTest
   ```
+- **Output Screenshot:**
+  ![Singleton Test Output](./week%201/SingletonPatternExample/singleton_output.png)
 
 #### [Exercise 2: Implementing the Factory Method Pattern](./week 1/FactoryMethodPatternExample)
 - **Scenario:** Develop a document management system that creates different types of documents (e.g., Word, PDF, Excel) using the Factory Method pattern.
@@ -29,10 +31,12 @@ This repository contains exercises completed as part of the Cognizant Java Full 
   - **Concrete Factories** (`WordDocumentFactory`, `PdfDocumentFactory`, `ExcelDocumentFactory`) overriding `createDocument()` to return instances of their respective documents.
 - **How to Compile and Run:**
   ```powershell
-  cd week 1/FactoryMethodPatternExample
+  cd "week 1/FactoryMethodPatternExample"
   javac *.java
   java FactoryMethodTest
   ```
+- **Output Screenshot:**
+  ![Factory Method Test Output](./week%201/FactoryMethodPatternExample/factory_output.png)
 
 ### Data Structures and Algorithms
 
@@ -49,6 +53,8 @@ This repository contains exercises completed as part of the Cognizant Java Full 
   javac *.java
   java SearchTest
   ```
+- **Output Screenshot:**
+  ![Search Test Output](./week%201/ECommercePlatformSearch/search_output.png)
 
 #### [Exercise 7: Financial Forecasting](./week 1/FinancialForecasting)
 - **Scenario:** Develop a financial forecasting tool that predicts future values based on past growth rates using recursive and optimized approaches.
@@ -63,4 +69,6 @@ This repository contains exercises completed as part of the Cognizant Java Full 
   javac *.java
   java ForecastingTest
   ```
+- **Output Screenshot:**
+  ![Financial Forecasting Output](./week%201/FinancialForecasting/forecasting_output.png)
 

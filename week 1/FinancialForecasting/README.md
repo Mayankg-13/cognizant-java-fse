@@ -28,3 +28,7 @@ This project implements and analyzes recursive, memoized, and iterative algorith
 To optimize the recursive solution and avoid excessive computation or resource consumption, we use:
 1. **Memoization (Dynamic Programming):** We use a cache (e.g., an array or hash map) to store the results of $FV_i$ once they are calculated. If the program queries the forecast for intermediate years multiple times, it fetches the value from the cache in $O(1)$ time rather than recalculating recursively.
 2. **Iterative Approach:** By replacing the recursive call stack with a simple `for` loop, we reduce auxiliary space complexity from $O(N)$ to $O(1)$. This prevents `StackOverflowError` and runs faster in practice because it avoids the overhead of method call stack frames.
+
+## 5. Execution Output Screenshot
+![Financial Forecasting Output](./forecasting_output.png)
+
