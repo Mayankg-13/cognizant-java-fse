@@ -83,8 +83,6 @@ END;
 ```
 
 ## 3. How to Run
-
-### Option A: Using Oracle SQL (Real Database)
 1. Run the `schema.sql` script to create the tables and populate them with seed data.
 2. Execute `Scenario1.sql` to apply interest rate discounts.
 3. Execute `Scenario2.sql` to update VIP promotions.
@@ -94,15 +92,7 @@ END;
    @Scenario3.sql
    ```
 
-### Option B: Using the Java Simulator (Verification CLI)
-If you do not have Oracle Database/SQL*Plus set up, we have provided a Java simulation `PLSQLSimulator.java` that matches the exact structure, data, and logic.
-
-To run:
-```powershell
-javac PLSQLSimulator.java
-java PLSQLSimulator
-```
-
 ## 4. Execution Output Screenshot
 ![Control Structures Output](./control_structures_win.png)
+
 
