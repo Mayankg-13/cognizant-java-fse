@@ -98,11 +98,10 @@ This repository contains exercises completed as part of the Cognizant Java Full 
 
 ### Unit Testing
 
-#### [Exercise 1: Setting Up JUnit](./week 1/JUnitBasicExercises)
+#### [Exercise 1: Setting Up JUnit & Basic Tests](./week 1/JUnitBasicExercises)
 - **Scenario:** Set up a Java project to write unit tests using JUnit 4.
 - **Implementation Details:**
   - **Setup and Teardown Fixtures:** `@Before` and `@After` annotations to instantiate and clean up resources before/after each test.
-  - **Various Assertions:** Utilizing JUnit assertions (`assertEquals`, `assertTrue`, `assertFalse`, `assertNull`, `assertNotNull`) to validate test outcomes.
   - **Arrange-Act-Assert (AAA) Pattern:** Organizing test cases into distinct Arrange, Act, and Assert steps.
 - **How to Compile and Run:**
   ```powershell
@@ -111,5 +110,18 @@ This repository contains exercises completed as part of the Cognizant Java Full 
   ```
 - **Output Screenshot:**
   ![JUnit Basic Tests Output](./week%201/JUnitBasicExercises/junit_basic_win.png)
+
+#### [Exercise 3: Assertions in JUnit](./week 1/JUnitAssertions)
+- **Scenario:** Use different assertions in JUnit to validate test results.
+- **Implementation Details:**
+  - **Various Assertions:** Utilizing JUnit assertions (`assertEquals`, `assertTrue`, `assertFalse`, `assertNull`, `assertNotNull`) to validate test outcomes.
+- **How to Compile and Run:**
+  ```powershell
+  cd "week 1/JUnitAssertions"
+  python run.py
+  ```
+- **Output Screenshot:**
+  ![JUnit Assertions Output](./week%201/JUnitAssertions/junit_assertions_win.png)
+
 
 

@@ -1,11 +1,6 @@
 package com.example;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertNotNull;
-
 import org.junit.Before;
 import org.junit.After;
 import org.junit.Test;
@@ -48,25 +43,5 @@ public class CalculatorTest {
         assertEquals(5, result);
         System.out.println("Test: testSubtract passed.");
     }
-
-    // Exercise 3: Diverse Assertions Demonstration
-    @Test
-    public void testAssertions() {
-        // Assert Equals
-        assertEquals(50, calculator.multiply(10, 5));
-
-        // Assert True
-        assertTrue(calculator.add(5, 5) > 0);
-
-        // Assert False
-        assertFalse(calculator.subtract(5, 5) > 0);
-
-        // Assert Null
-        Object obj = null;
-        assertNull(obj);
-
-        // Assert Not Null
-        assertNotNull(calculator);
-        System.out.println("Test: testAssertions passed.");
-    }
 }
+
