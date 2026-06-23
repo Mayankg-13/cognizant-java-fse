@@ -95,3 +95,21 @@ This repository contains exercises completed as part of the Cognizant Java Full 
   - Run the scripts `Scenario1.sql`, `Scenario2.sql`, and `Scenario3.sql` in your Oracle SQL client.
 - **Output Screenshot:**
   ![Stored Procedures Output](./week%201/StoredProcedures/stored_procedures_win.png)
+
+### Unit Testing
+
+#### [Exercise 1: Setting Up JUnit](./week 1/JUnitBasicExercises)
+- **Scenario:** Set up a Java project to write unit tests using JUnit 4.
+- **Implementation Details:**
+  - **Setup and Teardown Fixtures:** `@Before` and `@After` annotations to instantiate and clean up resources before/after each test.
+  - **Various Assertions:** Utilizing JUnit assertions (`assertEquals`, `assertTrue`, `assertFalse`, `assertNull`, `assertNotNull`) to validate test outcomes.
+  - **Arrange-Act-Assert (AAA) Pattern:** Organizing test cases into distinct Arrange, Act, and Assert steps.
+- **How to Compile and Run:**
+  ```powershell
+  cd "week 1/JUnitBasicExercises"
+  python run.py
+  ```
+- **Output Screenshot:**
+  ![JUnit Basic Tests Output](./week%201/JUnitBasicExercises/junit_basic_win.png)
+
+
