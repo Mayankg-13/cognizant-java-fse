@@ -1,13 +1,15 @@
-# Exercise 1: Mocking and Stubbing (Mockito Hands-On Exercises)
+# Mockito Hands-On Exercises (Exercise 1 & 2)
 
-This project demonstrates how to test a service (`MyService`) that depends on an external API (`ExternalApi`) using Mockito to mock the external API and stub its methods.
+This project contains hands-on exercises for testing a service (`MyService`) that depends on an external API (`ExternalApi`) using Mockito.
+- **Exercise 1**: Mocking and Stubbing.
+- **Exercise 2**: Verifying Interactions.
 
 ## Project Structure
 
 - `pom.xml`: Maven configuration file declaring dependencies for JUnit Jupiter and Mockito.
 - `src/main/java/ExternalApi.java`: Dependency interface defining the `getData()` method.
 - `src/main/java/MyService.java`: Service class consuming `ExternalApi`.
-- `src/test/java/MyServiceTest.java`: JUnit 5 test class mocking the API and stubbing the response to verify functionality.
+- `src/test/java/MyServiceTest.java`: JUnit 5 test class validating behavior using Mockito mocking, stubbing, and verification.
 - `run.py`: A simple python runner script to compile and run tests locally.
 
 ---
@@ -52,7 +54,7 @@ public class MyService {
 }
 ```
 
-### 4. Test Case with Mocking and Stubbing (`MyServiceTest.java`)
+### 4. Mockito Tests (`MyServiceTest.java`)
 ```java
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -60,6 +62,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 public class MyServiceTest {
+    
+    // Exercise 1: Mocking and Stubbing
     @Test
     public void testExternalApi() {
         // Step 1: Create a mock object for the external API
@@ -74,8 +78,23 @@ public class MyServiceTest {
 
         assertEquals("Mock Data", result);
     }
+
+    // Exercise 2: Verifying Interactions
+    @Test
+    public void testVerifyInteraction() {
+        // Step 1: Create a mock object
+        ExternalApi mockApi = Mockito.mock(ExternalApi.class);
+
+        // Step 2: Call the method
+        MyService service = new MyService(mockApi);
+        service.fetchData();
+
+        // Step 3: Verify the interaction
+        verify(mockApi).getData();
+    }
 }
 ```
+
 
 ---
 

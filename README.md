@@ -138,12 +138,12 @@ This repository contains exercises completed as part of the Cognizant Java Full 
 
 ### Mockito Exercises
 
-#### [Exercise 1: Mocking and Stubbing](./week 1/MockitoExercises)
-- **Scenario:** Test a service (`MyService`) that depends on an external API (`ExternalApi`) using Mockito to mock the external API and stub its methods.
+#### [Exercise 1 & 2: Mocking, Stubbing and Verifying Interactions](./week 1/MockitoExercises)
+- **Scenario:** Test a service (`MyService`) that depends on an external API (`ExternalApi`) using Mockito to mock, stub, and verify method calls on the external API.
 - **Implementation Details:**
-  - **Mock Object:** Using `Mockito.mock(ExternalApi.class)` to create a mock dependency.
-  - **Stubbing:** Utilizing `when(mockApi.getData()).thenReturn("Mock Data")` to define simulated behavior.
-  - **Test Verification:** Running JUnit 5 tests to assert that the mocked response is processed correctly by the service class.
+  - **Mock Object (Exercise 1 & 2):** Using `Mockito.mock(ExternalApi.class)` to create a mock dependency.
+  - **Stubbing (Exercise 1):** Utilizing `when(mockApi.getData()).thenReturn("Mock Data")` to define simulated behavior and asserting results.
+  - **Verifying Interactions (Exercise 2):** Using `verify(mockApi).getData()` to assert that the method was successfully called on the mock dependency.
 - **How to Compile and Run:**
   ```powershell
   cd "week 1/MockitoExercises"
@@ -151,3 +151,4 @@ This repository contains exercises completed as part of the Cognizant Java Full 
   ```
 - **Output Screenshot:**
   ![Mockito Tests Output](./week%201/MockitoExercises/mockito_win.png)
+
