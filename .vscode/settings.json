@@ -1,9 +1,0 @@
-{
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "week 1/JUnitBasicExercises/lib/*.jar",
-        "week 1/JUnitAssertions/lib/*.jar",
-        "week 1/JUnitArrangeActAssert/lib/*.jar",
-        "week 1/MockitoExercises/lib/*.jar"
-    ]
-}
