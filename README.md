@@ -123,5 +123,16 @@ This repository contains exercises completed as part of the Cognizant Java Full 
 - **Output Screenshot:**
   ![JUnit Assertions Output](./week%201/JUnitAssertions/junit_assertions_win.png)
 
-
+#### [Exercise 4: Arrange-Act-Assert (AAA) Pattern, Test Fixtures, Setup and Teardown Methods in JUnit](./week 1/JUnitArrangeActAssert)
+- **Scenario:** Organize unit tests using the Arrange-Act-Assert (AAA) pattern and use setup and teardown test fixtures in JUnit.
+- **Implementation Details:**
+  - **Setup and Teardown Fixtures:** `@Before` and `@After` annotations to instantiate and clean up resources before/after each test case.
+  - **Arrange-Act-Assert (AAA) Pattern:** Structuring each test method into distinct Arrange (setup input data), Act (perform function under test), and Assert (verify expected behavior) sections.
+- **How to Compile and Run:**
+  ```powershell
+  cd "week 1/JUnitArrangeActAssert"
+  python run.py
+  ```
+- **Output Screenshot:**
+  ![JUnit AAA Tests Output](./week%201/JUnitArrangeActAssert/junit_aaa_win.png)
 
