@@ -152,3 +152,18 @@ This repository contains exercises completed as part of the Cognizant Java Full 
 - **Output Screenshot:**
   ![Mockito Tests Output](./week%201/MockitoExercises/mockito_win.png)
 
+### Logging using SLF4J
+
+#### [Exercise 1: Logging Error Messages and Warning Levels](./week 1/LoggingSLF4J)
+- **Scenario:** Write a Java application that configures and uses SLF4J and Logback to demonstrate logging error messages and warning levels.
+- **Implementation Details:**
+  - **SLF4J + Logback integration:** Including `slf4j-api` and `logback-classic` dependencies.
+  - **Logger instance:** Creating a static final logger using `LoggerFactory.getLogger(LoggingExample.class)`.
+  - **Logging levels:** Invoking `logger.error(...)` and `logger.warn(...)` to write diagnostic logs.
+- **How to Compile and Run:**
+  ```powershell
+  cd "week 1/LoggingSLF4J"
+  python run.py
+  ```
+- **Output Screenshot:**
+  ![Logging Tests Output](./week%201/LoggingSLF4J/logging_win.png)
