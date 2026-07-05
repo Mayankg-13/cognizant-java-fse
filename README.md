@@ -1,169 +1,26 @@
-# Cognizant Java FSE - Design Patterns
+# Cognizant Java FSE Training Portfolio
 
-This repository contains exercises completed as part of the Cognizant Java Full Stack Engineering (FSE) Deepskill Program.
+This repository contains the training exercises completed as part of the Cognizant Java Full Stack Engineering (FSE) Deepskill Program, organized week-wise.
 
-## Exercises
+---
 
-### Creational Design Patterns
+## Week 1 Exercises
 
-#### [Exercise 1: Implementing the Singleton Pattern](./week 1/SingletonPatternExample)
-- **Scenario:** Ensure a logging utility class (`Logger`) has only one instance throughout the application lifecycle to ensure consistent logging.
-- **Implementation Details:**
-  - **Private constructor** to prevent external instantiation.
-  - **Static member variable** to hold the single instance of the class.
-  - **Thread-Safe Double-Checked Locking** inside `getInstance()` to ensure lazy initialization works correctly in a multi-threaded environment.
-  - **Reflection Guard** in the constructor to protect against reflection-based instantiations.
-- **How to Compile and Run:**
-  ```powershell
-  cd "week 1/SingletonPatternExample"
-  javac Logger.java SingletonTest.java
-  java SingletonTest
-  ```
-- **Output Screenshot:**
-  ![Singleton Test Output](./week%201/SingletonPatternExample/singleton_win.png)
+### Design Patterns
+- [Exercise 1: Implementing the Singleton Pattern](./week%201/SingletonPatternExample)
+- [Exercise 2: Implementing the Factory Method Pattern](./week%201/FactoryMethodPatternExample)
 
-#### [Exercise 2: Implementing the Factory Method Pattern](./week 1/FactoryMethodPatternExample)
-- **Scenario:** Develop a document management system that creates different types of documents (e.g., Word, PDF, Excel) using the Factory Method pattern.
-- **Implementation Details:**
-  - **Document interface** declaring common operations: `open()`, `save()`, and `close()`.
-  - **Concrete Documents** (`WordDocument`, `PdfDocument`, `ExcelDocument`) implementing specific behaviors for each document type.
-  - **Abstract DocumentFactory** declaring the creator method `createDocument()`.
-  - **Concrete Factories** (`WordDocumentFactory`, `PdfDocumentFactory`, `ExcelDocumentFactory`) overriding `createDocument()` to return instances of their respective documents.
-- **How to Compile and Run:**
-  ```powershell
-  cd "week 1/FactoryMethodPatternExample"
-  javac *.java
-  java FactoryMethodTest
-  ```
-- **Output Screenshot:**
-  ![Factory Method Test Output](./week%201/FactoryMethodPatternExample/factory_win.png)
-
-### Data Structures and Algorithms
-
-#### [Exercise 2: E-commerce Platform Search Function](./week 1/ECommercePlatformSearch)
-- **Scenario:** Optimize the search functionality of an e-commerce platform for fast performance by implementing Linear and Binary Search.
-- **Implementation Details:**
-  - **Product class** defining search attributes: `productId`, `productName`, and `category`.
-  - **Linear Search** matching target product IDs sequentially in O(N) worst-case complexity.
-  - **Binary Search** matching target product IDs on a sorted array in O(log N) worst-case complexity.
-  - **Big O & Suitability analysis** documented in the project's folder.
-- **How to Compile and Run:**
-  ```powershell
-  cd "week 1/ECommercePlatformSearch"
-  javac *.java
-  java SearchTest
-  ```
-- **Output Screenshot:**
-  ![Search Test Output](./week%201/ECommercePlatformSearch/search_win.png)
-
-#### [Exercise 7: Financial Forecasting](./week 1/FinancialForecasting)
-- **Scenario:** Develop a financial forecasting tool that predicts future values based on past growth rates using recursive and optimized approaches.
-- **Implementation Details:**
-  - **Naive Recursion** to project future value based on constant growth rate.
-  - **Memoized Recursion** to optimize calculations using an array cache.
-  - **Iterative Approach** to calculate values in $O(1)$ auxiliary space, avoiding call stack limitations.
-  - **Varying Growth Rates** implementation recursively mapping sequential historical growth rates to projected values.
-- **How to Compile and Run:**
-  ```powershell
-  cd "week 1/FinancialForecasting"
-  javac *.java
-  java ForecastingTest
-  ```
-- **Output Screenshot:**
-  ![Financial Forecasting Output](./week%201/FinancialForecasting/forecasting_win.png)
+### Data Structures & Algorithms
+- [Exercise 2: E-commerce Platform Search Function](./week%201/ECommercePlatformSearch)
+- [Exercise 7: Financial Forecasting](./week%201/FinancialForecasting)
 
 ### PL/SQL
+- [Exercise 1: Control Structures](./week%201/ControlStructures)
+- [Exercise 3: Stored Procedures](./week%201/StoredProcedures)
 
-#### [Exercise 1: Control Structures](./week 1/ControlStructures)
-- Scenario: Implement control structures to apply discounts, update customer statuses, and generate reminders.
-  - Scenario 1: Loop through all customers and apply a 1% discount to loan interest rates for customers over 60 years old.
-  - Scenario 2: Iterate through customers and set `IsVIP` to `'TRUE'` for those with a balance over $10,000.
-  - Scenario 3: Fetch loans due in the next 30 days and print reminder messages.
-- How to Execute:
-  - Run `schema.sql` to initialize the database tables and insert sample records.
-  - Run the anonymous blocks `Scenario1.sql`, `Scenario2.sql`, and `Scenario3.sql` in your Oracle SQL client.
-- Output Screenshot:
-  ![Control Structures Output](./week%201/ControlStructures/control_structures_win.png)
-
-#### [Exercise 3: Stored Procedures](./week 1/StoredProcedures)
-- **Scenario:** Implement stored procedures to apply monthly interest to savings accounts, apply departmental employee bonuses, and securely transfer funds between accounts.
-  - Scenario 1: Write a stored procedure `ProcessMonthlyInterest` that updates all savings account balances by adding 1% interest.
-  - Scenario 2: Write a stored procedure `UpdateEmployeeBonus` that updates employee salaries in a given department by a given percentage parameter.
-  - Scenario 3: Write a stored procedure `TransferFunds` that transfers a specified amount between two accounts, validating balances and ensuring safe concurrency.
-- **How to Execute:**
-  - Run `schema.sql` to initialize the database tables and insert sample records.
-  - Run the scripts `Scenario1.sql`, `Scenario2.sql`, and `Scenario3.sql` in your Oracle SQL client.
-- **Output Screenshot:**
-  ![Stored Procedures Output](./week%201/StoredProcedures/stored_procedures_win.png)
-
-### Unit Testing
-
-#### [Exercise 1: Setting Up JUnit & Basic Tests](./week 1/JUnitBasicExercises)
-- **Scenario:** Set up a Java project to write unit tests using JUnit 4.
-- **Implementation Details:**
-  - **Setup and Teardown Fixtures:** `@Before` and `@After` annotations to instantiate and clean up resources before/after each test.
-  - **Arrange-Act-Assert (AAA) Pattern:** Organizing test cases into distinct Arrange, Act, and Assert steps.
-- **How to Compile and Run:**
-  ```powershell
-  cd "week 1/JUnitBasicExercises"
-  python run.py
-  ```
-- **Output Screenshot:**
-  ![JUnit Basic Tests Output](./week%201/JUnitBasicExercises/junit_basic_win.png)
-
-#### [Exercise 3: Assertions in JUnit](./week 1/JUnitAssertions)
-- **Scenario:** Use different assertions in JUnit to validate test results.
-- **Implementation Details:**
-  - **Various Assertions:** Utilizing JUnit assertions (`assertEquals`, `assertTrue`, `assertFalse`, `assertNull`, `assertNotNull`) to validate test outcomes.
-- **How to Compile and Run:**
-  ```powershell
-  cd "week 1/JUnitAssertions"
-  python run.py
-  ```
-- **Output Screenshot:**
-  ![JUnit Assertions Output](./week%201/JUnitAssertions/junit_assertions_win.png)
-
-#### [Exercise 4: Arrange-Act-Assert (AAA) Pattern, Test Fixtures, Setup and Teardown Methods in JUnit](./week 1/JUnitArrangeActAssert)
-- **Scenario:** Organize unit tests using the Arrange-Act-Assert (AAA) pattern and use setup and teardown test fixtures in JUnit.
-- **Implementation Details:**
-  - **Setup and Teardown Fixtures:** `@Before` and `@After` annotations to instantiate and clean up resources before/after each test case.
-  - **Arrange-Act-Assert (AAA) Pattern:** Structuring each test method into distinct Arrange (setup input data), Act (perform function under test), and Assert (verify expected behavior) sections.
-- **How to Compile and Run:**
-  ```powershell
-  cd "week 1/JUnitArrangeActAssert"
-  python run.py
-  ```
-- **Output Screenshot:**
-  ![JUnit AAA Tests Output](./week%201/JUnitArrangeActAssert/junit_aaa_win.png)
-
-### Mockito Exercises
-
-#### [Exercise 1 & 2: Mocking, Stubbing and Verifying Interactions](./week 1/MockitoExercises)
-- **Scenario:** Test a service (`MyService`) that depends on an external API (`ExternalApi`) using Mockito to mock, stub, and verify method calls on the external API.
-- **Implementation Details:**
-  - **Mock Object (Exercise 1 & 2):** Using `Mockito.mock(ExternalApi.class)` to create a mock dependency.
-  - **Stubbing (Exercise 1):** Utilizing `when(mockApi.getData()).thenReturn("Mock Data")` to define simulated behavior and asserting results.
-  - **Verifying Interactions (Exercise 2):** Using `verify(mockApi).getData()` to assert that the method was successfully called on the mock dependency.
-- **How to Compile and Run:**
-  ```powershell
-  cd "week 1/MockitoExercises"
-  python run.py
-  ```
-- **Output Screenshot:**
-  ![Mockito Tests Output](./week%201/MockitoExercises/mockito_win.png)
-
-### Logging using SLF4J
-
-#### [Exercise 1: Logging Error Messages and Warning Levels](./week 1/LoggingSLF4J)
-- **Scenario:** Write a Java application that configures and uses SLF4J and Logback to demonstrate logging error messages and warning levels.
-- **Implementation Details:**
-  - **SLF4J + Logback integration:** Including `slf4j-api` and `logback-classic` dependencies.
-  - **Logger instance:** Creating a static final logger using `LoggerFactory.getLogger(LoggingExample.class)`.
-  - **Logging levels:** Invoking `logger.error(...)` and `logger.warn(...)` to write diagnostic logs.
-- **How to Compile and Run:**
-  ```powershell
-  cd "week 1/LoggingSLF4J"
-  python run.py
-  ```
-- **Output Screenshot:**
-  ![Logging Tests Output](./week%201/LoggingSLF4J/logging_win.png)
+### Unit Testing & Mocking (JUnit & Mockito)
+- [Exercise 1: Setting Up JUnit & Basic Tests](./week%201/JUnitBasicExercises)
+- [Exercise 3: Assertions in JUnit](./week%201/JUnitAssertions)
+- [Exercise 4: Arrange-Act-Assert (AAA) Pattern, Test Fixtures, Setup and Teardown Methods](./week%201/JUnitArrangeActAssert)
+- [Mockito Exercise 1 & 2: Mocking, Stubbing, and Verifying Interactions](./week%201/MockitoExercises)
+- [Logging Exercise 1: Logging Error Messages and Warning Levels using SLF4J](./week%201/LoggingSLF4J)
