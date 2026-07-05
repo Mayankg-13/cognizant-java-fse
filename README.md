@@ -136,3 +136,18 @@ This repository contains exercises completed as part of the Cognizant Java Full 
 - **Output Screenshot:**
   ![JUnit AAA Tests Output](./week%201/JUnitArrangeActAssert/junit_aaa_win.png)
 
+### Mockito Exercises
+
+#### [Exercise 1: Mocking and Stubbing](./week 1/MockitoExercises)
+- **Scenario:** Test a service (`MyService`) that depends on an external API (`ExternalApi`) using Mockito to mock the external API and stub its methods.
+- **Implementation Details:**
+  - **Mock Object:** Using `Mockito.mock(ExternalApi.class)` to create a mock dependency.
+  - **Stubbing:** Utilizing `when(mockApi.getData()).thenReturn("Mock Data")` to define simulated behavior.
+  - **Test Verification:** Running JUnit 5 tests to assert that the mocked response is processed correctly by the service class.
+- **How to Compile and Run:**
+  ```powershell
+  cd "week 1/MockitoExercises"
+  python run.py
+  ```
+- **Output Screenshot:**
+  ![Mockito Tests Output](./week%201/MockitoExercises/mockito_win.png)
