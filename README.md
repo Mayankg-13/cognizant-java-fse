@@ -24,3 +24,10 @@ This repository contains the training exercises completed as part of the Cogniza
 - [Exercise 4: Arrange-Act-Assert (AAA) Pattern, Test Fixtures, Setup and Teardown Methods](./week%201/JUnitArrangeActAssert)
 - [Mockito Exercise 1 & 2: Mocking, Stubbing, and Verifying Interactions](./week%201/MockitoExercises)
 - [Logging Exercise 1: Logging Error Messages and Warning Levels using SLF4J](./week%201/LoggingSLF4J)
+
+## Week 2 Exercises
+
+### Spring Core and Maven
+- [Exercise 1: Configuring a Basic Spring Application](./week%202/LibraryManagement)
+- [Exercise 2: Implementing Dependency Injection](./week%202/LibraryManagement_DI)
+
