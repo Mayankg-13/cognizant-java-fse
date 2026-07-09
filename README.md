@@ -33,5 +33,6 @@ This repository contains the training exercises completed as part of the Cogniza
 - [Exercise 4: Creating and Configuring a Maven Project](./week%202/LibraryManagement_Maven)
 
 ### Spring Data JPA & Hibernate
+- [Hands on 4: Difference between JPA, Hibernate and Spring Data JPA](./week%202/DifferenceJPAHibernateSpringDataJPA)
 - [ORM Learn: Hands-on on Spring Data JPA and Hibernate](./week%202/orm-learn)
 
