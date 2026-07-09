@@ -32,3 +32,6 @@ This repository contains the training exercises completed as part of the Cogniza
 - [Exercise 2: Implementing Dependency Injection](./week%202/LibraryManagement_DI)
 - [Exercise 4: Creating and Configuring a Maven Project](./week%202/LibraryManagement_Maven)
 
+### Spring Data JPA & Hibernate
+- [ORM Learn: Hands-on on Spring Data JPA and Hibernate](./week%202/orm-learn)
+
