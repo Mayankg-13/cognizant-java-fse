@@ -30,4 +30,5 @@ This repository contains the training exercises completed as part of the Cogniza
 ### Spring Core and Maven
 - [Exercise 1: Configuring a Basic Spring Application](./week%202/LibraryManagement)
 - [Exercise 2: Implementing Dependency Injection](./week%202/LibraryManagement_DI)
+- [Exercise 4: Creating and Configuring a Maven Project](./week%202/LibraryManagement_Maven)
 
