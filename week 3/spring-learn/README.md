@@ -1,15 +1,18 @@
 # Week 3: Spring Web & Spring Core Exercises (spring-learn)
 
-This directory contains the exercises completed for Week 3 of the Cognizant Java FSE training, focusing on Spring Boot Web, XML Bean Configuration, Dependency Injection, and custom logging.
+This directory contains the exercises completed for Week 3 of the Cognizant Java FSE training, focusing on Spring Boot Web, XML Bean Configuration, Dependency Injection, Custom Logging, Spring Security, and JWT Authentication.
 
 ## Project Structure
 
-- `pom.xml`: Maven configuration file declaring dependencies for Spring Boot Starter Web and DevTools.
+- `pom.xml`: Maven configuration file declaring dependencies for Spring Boot Starter Web, DevTools, Spring Security, and io.jsonwebtoken library.
 - `src/main/java/spring_learn/SpringLearnApplication.java`: Main entry point class that boots the Spring Boot context, logs application startup, and executes bean lookup.
 - `src/main/java/spring_learn/Country.java`: Domain entity representing a Country with SLF4J logging inside its constructor, getters, and setters.
 - `src/main/java/spring_learn/controller/HelloController.java`: REST Controller for Exercise 3, mapping GET `/hello`.
 - `src/main/java/spring_learn/controller/CountryController.java`: REST Controller for Exercise 4 and 5, mapping GET `/country` and GET `/countries/{code}` respectively.
+- `src/main/java/spring_learn/controller/AuthController.java`: REST Controller for Exercise 6, mapping GET `/authenticate`.
 - `src/main/java/spring_learn/service/CountryService.java`: Service class for Exercise 5, looking up a country by code case-insensitively from the XML bean list.
+- `src/main/java/spring_learn/config/SecurityConfig.java`: Security Configuration class configuring JWT service public access.
+- `src/main/java/spring_learn/security/JwtUtil.java`: Token Generator Utility class using io.jsonwebtoken.
 - `src/main/resources/country.xml`: Spring XML configuration file defining the `Country` beans and list.
 - `src/main/resources/application.properties`: Configuration properties defining application settings such as the application name, logging levels, and server port.
 - `spring_learn_win.png`: Screenshot showing the successful build and execution output of Exercise 1.
@@ -17,6 +20,7 @@ This directory contains the exercises completed for Week 3 of the Cognizant Java
 - `spring_learn_rest_win.png`: Screenshot showing the browser response for Exercise 3.
 - `spring_learn_country_rest_win.png`: Screenshot showing the browser response for Exercise 4.
 - `spring_learn_countries_win.png`: Screenshot showing the browser response for Exercise 5.
+- `spring_learn_jwt_win.png`: Screenshot showing the successful command execution and response of JWT Authentication Service (Exercise 6).
 
 ---
 
@@ -176,7 +180,7 @@ public class SpringLearnApplication {
 ## Exercise 3: Hello World RESTful Web Service
 
 ### Description
-In this exercise, we write a RESTful web service using Spring Web annotations. The service exposes a GET endpoint at `/hello` on port `8083` and returns the plain text string `"Hello World!!"`. Logging is added to trace the start and end of the handler method execution.
+In this exercise, we write a RESTful web service using Spring Web annotations. The service exposes a GET endpoint at `/hello` on port `8083` (now `8090` in latest configuration) and returns the plain text string `"Hello World!!"`. Logging is added to trace the start and end of the handler method execution.
 
 ### Code Implementation
 
@@ -202,23 +206,6 @@ public class HelloController {
     }
 }
 ```
-
-#### 2. Server Port Configuration (`src/main/resources/application.properties`)
-```properties
-spring.application.name=spring-learn
-logging.level.spring_learn=DEBUG
-server.port=8083
-```
-
-### Compile and Run
-1. Run the application:
-   ```powershell
-   ./mvnw spring-boot:run
-   ```
-2. Navigate to `http://localhost:8083/hello` in a web browser or Postman to request the service.
-
-### Output Screenshot (Exercise 3)
-![Spring Learn Exercise 3 Output](./spring_learn_rest_win.png)
 
 ---
 
@@ -251,16 +238,6 @@ public class CountryController {
     }
 }
 ```
-
-### Compile and Run
-1. Run the application:
-   ```powershell
-   ./mvnw spring-boot:run
-   ```
-2. Navigate to `http://localhost:8083/country` in a web browser or Postman.
-
-### Output Screenshot (Exercise 4)
-![Spring Learn Exercise 4 Output](./spring_learn_country_rest_win.png)
 
 ---
 
@@ -381,15 +358,155 @@ public class CountryController {
 }
 ```
 
+---
+
+## Exercise 6: Create Authentication Service that returns JWT
+
+### Description
+In this exercise, we configure Spring Security and implement a RESTful authentication endpoint `/authenticate` on port `8090`. The controller method reads the HTTP Basic `Authorization` header, decodes the base64-encoded credentials (username and password), and generates a signed JSON Web Token (JWT) using the `jjwt` library.
+
+### Code Implementation
+
+#### 1. Security Config Class (`src/main/java/spring_learn/config/SecurityConfig.java`)
+```java
+package spring_learn.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.web.SecurityFilterChain;
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http
+            .csrf(csrf -> csrf.disable())
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/authenticate").permitAll()
+                .anyRequest().authenticated()
+            );
+        return http.build();
+    }
+}
+```
+
+#### 2. JWT Utility Class (`src/main/java/spring_learn/security/JwtUtil.java`)
+```java
+package spring_learn.security;
+
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
+import java.security.Key;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import org.springframework.stereotype.Component;
+
+@Component
+public class JwtUtil {
+
+    private static final Key KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+    private static final long EXPIRATION_TIME = 3600000; // 1 hour
+
+    public String generateToken(String username) {
+        Map<String, Object> claims = new HashMap<>();
+        return Jwts.builder()
+                .setClaims(claims)
+                .setSubject(username)
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
+                .signWith(KEY)
+                .compact();
+    }
+}
+```
+
+#### 3. Auth Controller Class (`src/main/java/spring_learn/controller/AuthController.java`)
+```java
+package spring_learn.controller;
+
+import java.util.Base64;
+import java.util.HashMap;
+import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RestController;
+import spring_learn.security.JwtUtil;
+
+@RestController
+public class AuthController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(AuthController.class);
+
+    @Autowired
+    private JwtUtil jwtUtil;
+
+    @GetMapping("/authenticate")
+    public ResponseEntity<Map<String, String>> authenticate(@RequestHeader(value = "Authorization", required = false) String authHeader) {
+        LOGGER.info("Start authenticate method");
+        
+        if (authHeader == null || !authHeader.startsWith("Basic ")) {
+            LOGGER.warn("Missing or invalid Authorization header");
+            Map<String, String> errorResponse = new HashMap<>();
+            errorResponse.put("error", "Unauthorized");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
+        }
+
+        try {
+            String base64Credentials = authHeader.substring("Basic ".length()).trim();
+            byte[] decodedBytes = Base64.getDecoder().decode(base64Credentials);
+            String credentials = new String(decodedBytes);
+            
+            String[] values = credentials.split(":", 2);
+            String username = values[0];
+            
+            LOGGER.info("Decoded username: {}", username);
+
+            String token = jwtUtil.generateToken(username);
+            
+            Map<String, String> response = new HashMap<>();
+            response.put("token", token);
+            
+            LOGGER.info("End authenticate method");
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            LOGGER.error("Error during decoding credentials", e);
+            Map<String, String> errorResponse = new HashMap<>();
+            errorResponse.put("error", "Invalid authorization format");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+        }
+    }
+}
+```
+
+#### 4. Server Port Configuration (`src/main/resources/application.properties`)
+```properties
+spring.application.name=spring-learn
+logging.level.spring_learn=DEBUG
+server.port=8090
+```
+
 ### Compile and Run
 1. Run the application:
    ```powershell
    ./mvnw spring-boot:run
    ```
-2. Navigate to `http://localhost:8083/countries/in` (or `us`, `de`, `jp`) in browser or Postman.
+2. Request the service via curl (using `-u` options for HTTP Basic Credentials):
+   ```powershell
+   curl.exe -s -u user:pwd http://localhost:8090/authenticate
+   ```
 
-### Output Screenshot (Exercise 5)
-![Spring Learn Exercise 5 Output](./spring_learn_countries_win.png)
+### Output Screenshot (Exercise 6)
+![Spring Learn Exercise 6 Output](./spring_learn_jwt_win.png)
 
 ---
 
@@ -422,21 +539,15 @@ When `context.getBean("country", Country.class)` is invoked:
 - **How is the bean converted into a JSON response?**
   Spring MVC uses the `HttpMessageConverter` interface to handle object conversion. Because the controller is annotated with `@RestController` (which implicitly applies `@ResponseBody` to all handler methods) and the Jackson library (`jackson-databind`) is present on the classpath (standard with Spring Boot Web), Spring uses `MappingJackson2HttpMessageConverter` to serialize the Java `Country` object into a JSON representation before writing it to the HTTP response body.
 
-### 5. Viewing HTTP Header Details
-HTTP headers carry metadata about the request and response in an HTTP transaction. Here is how to view them for the `/hello`, `/country`, and `/countries/{code}` services:
-
-#### In Chrome Developer Tools (Network Tab):
-1. Open Chrome and navigate to `http://localhost:8083/countries/in`.
-2. Press `F12` or right-click and choose **Inspect** to open Developer Tools.
-3. Switch to the **Network** tab.
-4. Refresh the page (`Ctrl + R`).
-5. Click on the `in` request entry in the list of network requests.
-6. The request details panel will show:
-   - **General**: Request URL (`http://localhost:8083/countries/in`), Request Method (`GET`), Status Code (`200 OK`), and Remote Address.
-   - **Response Headers**: Metadata sent by the server, such as `Content-Type: application/json` (indicating the output is a JSON object), `Transfer-Encoding: chunked`, and `Date`.
-   - **Request Headers**: Metadata sent by the browser to the server, including `Accept`, `User-Agent`, and `Host`.
-
-#### In Postman (Headers Tab):
-1. Enter `http://localhost:8083/countries/in` in the URL bar, set the method to `GET`, and click **Send**.
-2. Below the response body pane, locate and click the **Headers** tab.
-3. This displays the key-value pairs of response headers sent by the Spring application (e.g. `Content-Type`, `Transfer-Encoding`, `Date`, `Keep-Alive`, `Connection`).
+### 5. JWT Structure & Authentication Concepts
+- **How does HTTP Basic Authentication work?**
+  When running `curl.exe -u user:pwd`, the curl command encodes `user:pwd` in Base64 format and sends it via the `Authorization` request header as:
+  `Authorization: Basic dXNlcjpwd2Q=`
+  The backend parses this header, splits it by the prefix `Basic `, decodes `dXNlcjpwd2Q=` back to `user:pwd`, and extracts the username.
+- **What is the structure of a JWT?**
+  A JSON Web Token consists of three parts separated by dots (`.`):
+  1. **Header**: Contains metadata such as the hashing algorithm (`HS256`) and type of token (`JWT`).
+  2. **Payload**: Contains claims (subject/username, issuance time `iat`, expiration time `exp`).
+  3. **Signature**: Cryptographic signature generated by hashing the header and payload using a secret key (verified on subsequent requests to secure endpoints).
+- **SecurityConfig Details**:
+  The `SecurityConfig` configuration explicitly disables CSRF (as JWTs are stateless and immune to CSRF) and configures the `/authenticate` endpoint as `permitAll()` to allow new users to authenticate and receive a token.
