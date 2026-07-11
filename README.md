@@ -49,4 +49,4 @@ This repository contains the training exercises completed as part of the Cogniza
 ## Week 4 Exercises
 
 ### Spring Cloud Microservices
-- [Account & Loan Microservices](./Week4#week-4-spring-cloud-microservices-microservices-solutions)
+- [Account & Loan Microservices](./week%204#week-4-spring-cloud-microservices-microservices-solutions)
