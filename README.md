@@ -1,6 +1,6 @@
 # Cognizant Java FSE Training Portfolio
 
-This repository contains the training exercises completed as part of the Cognizant Java Full Stack Engineering (FSE) Deepskill Program, organized week-wise.
+This repository contains the training exercises completed as part of the Cognizant Java FSE React Deepskill Program, organized week-wise.
 
 ---
 
