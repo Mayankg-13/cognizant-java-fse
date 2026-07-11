@@ -157,6 +157,55 @@ public class SpringLearnApplication {
 
 ---
 
+## Exercise 3: Hello World RESTful Web Service
+
+### Description
+In this exercise, we write a RESTful web service using Spring Web annotations. The service exposes a GET endpoint at `/hello` on port `8083` and returns the plain text string `"Hello World!!"`. Logging is added to trace the start and end of the handler method execution.
+
+### Code Implementation
+
+#### 1. REST Controller Class (`src/main/java/spring_learn/controller/HelloController.java`)
+```java
+package spring_learn.controller;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HelloController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(HelloController.class);
+
+    @GetMapping("/hello")
+    public String sayHello() {
+        LOGGER.info("Start sayHello() method");
+        String response = "Hello World!!";
+        LOGGER.info("End sayHello() method");
+        return response;
+    }
+}
+```
+
+#### 2. Server Port Configuration (`src/main/resources/application.properties`)
+```properties
+spring.application.name=spring-learn
+logging.level.spring_learn=DEBUG
+server.port=8083
+```
+
+### Compile and Run
+1. Run the application:
+   ```powershell
+   ./mvnw spring-boot:run
+   ```
+2. Navigate to `http://localhost:8083/hello` in a web browser or Postman to request the service.
+
+### Output Screenshot (Exercise 3)
+![Spring Learn Exercise 3 Output](./spring_learn_rest_win.png)
+
+---
+
 ## Detailed Explanations (SME Corner)
 
 ### 1. Spring XML Bean Configuration Key Concepts
@@ -178,3 +227,22 @@ When `context.getBean("country", Country.class)` is invoked:
    - Spring invokes the no-argument constructor of `Country` (logging `"Inside Country Constructor."`).
    - Spring uses reflection to call `setCode("IN")` and `setName("India")` (logging setter operations).
 3. **Retrieval**: Since it is scoped as a Singleton (default scope), it returns the fully configured `Country` instance. Subsequent calls will return the same cached instance.
+
+### 4. Viewing HTTP Header Details
+HTTP headers carry metadata about the request and response in an HTTP transaction. Here is how to view them for the `/hello` service:
+
+#### In Chrome Developer Tools (Network Tab):
+1. Open Chrome and navigate to `http://localhost:8083/hello`.
+2. Press `F12` or right-click and choose **Inspect** to open Developer Tools.
+3. Switch to the **Network** tab.
+4. Refresh the page (`Ctrl + R`).
+5. Click on the `hello` request entry in the list of network requests.
+6. The request details panel will show:
+   - **General**: Request URL (`http://localhost:8083/hello`), Request Method (`GET`), Status Code (`200 OK`), and Remote Address.
+   - **Response Headers**: Metadata sent by the server, such as `Content-Type: text/plain;charset=UTF-8` (indicating the output is plain text), `Content-Length: 13` (length of `"Hello World!!"`), and `Date`.
+   - **Request Headers**: Metadata sent by the browser to the server, including `Accept`, `User-Agent`, and `Host`.
+
+#### In Postman (Headers Tab):
+1. Enter `http://localhost:8083/hello` in the URL bar, set the method to `GET`, and click **Send**.
+2. Below the response body pane, locate and click the **Headers** tab.
+3. This displays the key-value pairs of response headers sent by the Spring application (e.g. `Content-Type`, `Content-Length`, `Date`, `Keep-Alive`, `Connection`).
