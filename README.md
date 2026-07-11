@@ -43,3 +43,4 @@ This repository contains the training exercises completed as part of the Cogniza
 - [Exercise 2: Load Country from Spring Configuration XML](./week%203/spring-learn#exercise-2-load-country-from-spring-configuration-xml)
 - [Exercise 3: Hello World RESTful Web Service](./week%203/spring-learn#exercise-3-hello-world-restful-web-service)
 - [Exercise 4: REST - Country Web Service](./week%203/spring-learn#exercise-4-rest---country-web-service)
+- [Exercise 5: REST - Get Country based on Country Code](./week%203/spring-learn#exercise-5-rest---get-country-based-on-country-code)

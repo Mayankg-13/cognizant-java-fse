@@ -8,13 +8,15 @@ This directory contains the exercises completed for Week 3 of the Cognizant Java
 - `src/main/java/spring_learn/SpringLearnApplication.java`: Main entry point class that boots the Spring Boot context, logs application startup, and executes bean lookup.
 - `src/main/java/spring_learn/Country.java`: Domain entity representing a Country with SLF4J logging inside its constructor, getters, and setters.
 - `src/main/java/spring_learn/controller/HelloController.java`: REST Controller for Exercise 3, mapping GET `/hello`.
-- `src/main/java/spring_learn/controller/CountryController.java`: REST Controller for Exercise 4, mapping GET `/country` and loading the Country bean from XML.
-- `src/main/resources/country.xml`: Spring XML configuration file defining the `Country` bean.
+- `src/main/java/spring_learn/controller/CountryController.java`: REST Controller for Exercise 4 and 5, mapping GET `/country` and GET `/countries/{code}` respectively.
+- `src/main/java/spring_learn/service/CountryService.java`: Service class for Exercise 5, looking up a country by code case-insensitively from the XML bean list.
+- `src/main/resources/country.xml`: Spring XML configuration file defining the `Country` beans and list.
 - `src/main/resources/application.properties`: Configuration properties defining application settings such as the application name, logging levels, and server port.
 - `spring_learn_win.png`: Screenshot showing the successful build and execution output of Exercise 1.
 - `spring_learn_country_win.png`: Screenshot showing the console logs for Exercise 2 (Country XML configuration loader).
 - `spring_learn_rest_win.png`: Screenshot showing the browser response for Exercise 3.
 - `spring_learn_country_rest_win.png`: Screenshot showing the browser response for Exercise 4.
+- `spring_learn_countries_win.png`: Screenshot showing the browser response for Exercise 5.
 
 ---
 
@@ -262,6 +264,135 @@ public class CountryController {
 
 ---
 
+## Exercise 5: REST - Get Country based on Country Code
+
+### Description
+In this exercise, we write a RESTful web service that returns a specific country's details based on its country code path variable (case-insensitive). The country list is configured in `country.xml`, searched via `CountryService` using Java Streams, and exposed via `@GetMapping("/countries/{code}")` in `CountryController`.
+
+### Code Implementation
+
+#### 1. Spring XML Configuration (`src/main/resources/country.xml`)
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="country" class="spring_learn.Country">
+        <property name="code" value="IN" />
+        <property name="name" value="India" />
+    </bean>
+
+    <bean id="us" class="spring_learn.Country">
+        <property name="code" value="US" />
+        <property name="name" value="United States" />
+    </bean>
+
+    <bean id="de" class="spring_learn.Country">
+        <property name="code" value="DE" />
+        <property name="name" value="Germany" />
+    </bean>
+
+    <bean id="in" class="spring_learn.Country">
+        <property name="code" value="IN" />
+        <property name="name" value="India" />
+    </bean>
+
+    <bean id="jp" class="spring_learn.Country">
+        <property name="code" value="JP" />
+        <property name="name" value="Japan" />
+    </bean>
+
+    <!-- Country List -->
+    <bean id="countryList" class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <ref bean="us" />
+                <ref bean="de" />
+                <ref bean="in" />
+                <ref bean="jp" />
+            </list>
+        </constructor-arg>
+    </bean>
+
+</beans>
+```
+
+#### 2. Service Class (`src/main/java/spring_learn/service/CountryService.java`)
+```java
+package spring_learn.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Service;
+import spring_learn.Country;
+
+@Service
+public class CountryService {
+
+    @SuppressWarnings("unchecked")
+    public Country getCountry(String code) {
+        ApplicationContext context = new ClassPathXmlApplicationContext("country.xml");
+        List<Country> countries = context.getBean("countryList", ArrayList.class);
+
+        return countries.stream()
+                .filter(c -> c.getCode().equalsIgnoreCase(code))
+                .findFirst()
+                .orElse(null);
+    }
+}
+```
+
+#### 3. Updated REST Controller Class (`src/main/java/spring_learn/controller/CountryController.java`)
+```java
+package spring_learn.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+import spring_learn.Country;
+import spring_learn.service.CountryService;
+
+@RestController
+public class CountryController {
+
+    @Autowired
+    private CountryService countryService;
+
+    @RequestMapping(value = "/country", method = RequestMethod.GET)
+    public Country getCountryIndia() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("country.xml");
+        Country country = context.getBean("country", Country.class);
+        return country;
+    }
+
+    @GetMapping("/countries/{code}")
+    public Country getCountry(@PathVariable("code") String code) {
+        return countryService.getCountry(code);
+    }
+}
+```
+
+### Compile and Run
+1. Run the application:
+   ```powershell
+   ./mvnw spring-boot:run
+   ```
+2. Navigate to `http://localhost:8083/countries/in` (or `us`, `de`, `jp`) in browser or Postman.
+
+### Output Screenshot (Exercise 5)
+![Spring Learn Exercise 5 Output](./spring_learn_countries_win.png)
+
+---
+
 ## Detailed Explanations (SME Corner)
 
 ### 1. Spring XML Bean Configuration Key Concepts
@@ -286,25 +417,26 @@ When `context.getBean("country", Country.class)` is invoked:
 
 ### 4. REST Controller Method & JSON Conversion
 - **What happens in the controller method?**
-  Inside `getCountryIndia()`, a new `ClassPathXmlApplicationContext` is created which loads `country.xml`. The IoC container parses the XML file, instantiates the `Country` bean (invoking the constructor and setter methods), and registers it. Then, `context.getBean("country", Country.class)` retrieves the bean, and the method returns the `Country` object.
+  - **In Exercise 4**: Inside `getCountryIndia()`, a new `ClassPathXmlApplicationContext` is created which loads `country.xml`. The IoC container parses the XML file, instantiates the `Country` bean (invoking the constructor and setter methods), and registers it. Then, `context.getBean("country", Country.class)` retrieves the bean, and the method returns the `Country` object.
+  - **In Exercise 5**: When the client calls GET `/countries/{code}`, Spring parses the `{code}` value via `@PathVariable` and calls `countryService.getCountry(code)`. The service loads `country.xml` (which instantiates the list of beans) and retrieves the `countryList` list. A Java Stream filters this list case-insensitively, returning the matching `Country` bean to the controller, which returns it to the client.
 - **How is the bean converted into a JSON response?**
   Spring MVC uses the `HttpMessageConverter` interface to handle object conversion. Because the controller is annotated with `@RestController` (which implicitly applies `@ResponseBody` to all handler methods) and the Jackson library (`jackson-databind`) is present on the classpath (standard with Spring Boot Web), Spring uses `MappingJackson2HttpMessageConverter` to serialize the Java `Country` object into a JSON representation before writing it to the HTTP response body.
 
 ### 5. Viewing HTTP Header Details
-HTTP headers carry metadata about the request and response in an HTTP transaction. Here is how to view them for the `/hello` and `/country` services:
+HTTP headers carry metadata about the request and response in an HTTP transaction. Here is how to view them for the `/hello`, `/country`, and `/countries/{code}` services:
 
 #### In Chrome Developer Tools (Network Tab):
-1. Open Chrome and navigate to `http://localhost:8083/country`.
+1. Open Chrome and navigate to `http://localhost:8083/countries/in`.
 2. Press `F12` or right-click and choose **Inspect** to open Developer Tools.
 3. Switch to the **Network** tab.
 4. Refresh the page (`Ctrl + R`).
-5. Click on the `country` request entry in the list of network requests.
+5. Click on the `in` request entry in the list of network requests.
 6. The request details panel will show:
-   - **General**: Request URL (`http://localhost:8083/country`), Request Method (`GET`), Status Code (`200 OK`), and Remote Address.
+   - **General**: Request URL (`http://localhost:8083/countries/in`), Request Method (`GET`), Status Code (`200 OK`), and Remote Address.
    - **Response Headers**: Metadata sent by the server, such as `Content-Type: application/json` (indicating the output is a JSON object), `Transfer-Encoding: chunked`, and `Date`.
    - **Request Headers**: Metadata sent by the browser to the server, including `Accept`, `User-Agent`, and `Host`.
 
 #### In Postman (Headers Tab):
-1. Enter `http://localhost:8083/country` in the URL bar, set the method to `GET`, and click **Send**.
+1. Enter `http://localhost:8083/countries/in` in the URL bar, set the method to `GET`, and click **Send**.
 2. Below the response body pane, locate and click the **Headers** tab.
 3. This displays the key-value pairs of response headers sent by the Spring application (e.g. `Content-Type`, `Transfer-Encoding`, `Date`, `Keep-Alive`, `Connection`).
