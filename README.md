@@ -36,3 +36,7 @@ This repository contains the training exercises completed as part of the Cogniza
 - [Hands on 4: Difference between JPA, Hibernate and Spring Data JPA](./week%202/DifferenceJPAHibernateSpringDataJPA)
 - [ORM Learn: Hands-on on Spring Data JPA and Hibernate](./week%202/orm-learn)
 
+## Week 3 Exercises
+
+### Spring Web
+- [Exercise: Spring Boot Web Application](./week%203/spring-learn)
