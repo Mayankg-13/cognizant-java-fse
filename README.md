@@ -38,5 +38,6 @@ This repository contains the training exercises completed as part of the Cogniza
 
 ## Week 3 Exercises
 
-### Spring Web
-- [Exercise: Spring Boot Web Application](./week%203/spring-learn)
+### Spring Web & Spring Core
+- [Exercise 1: Spring Boot Web Application & Custom Logging](./week%203/spring-learn#exercise-1-spring-boot-web-application--custom-logging)
+- [Exercise 2: Load Country from Spring Configuration XML](./week%203/spring-learn#exercise-2-load-country-from-spring-configuration-xml)
