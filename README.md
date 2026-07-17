@@ -50,3 +50,12 @@ This repository contains the training exercises completed as part of the Cogniza
 
 ### Spring Cloud Microservices
 - [Account & Loan Microservices](./week%204#week-4-spring-cloud-microservices-microservices-solutions)
+
+## Week 5 Exercises
+
+### React Basics & Styling
+- [Exercise 1: My First React Application](./week%205/myfirstreact)
+- [Exercise 2: Student Management Portal (Multiple Components)](./week%205/StudentApp)
+- [Exercise 3: Score Calculator Application (Functional Components & Styling)](./week%205/scorecalculatorapp)
+- [Exercise 4: Blog Application (Lifecycle Hooks & Fetch API)](./week%205/blogapp)
+- [Exercise 5: Cohort Tracker Dashboard (CSS Modules & Inline Styling)](./week%205/cohortstracker)
