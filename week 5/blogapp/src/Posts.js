@@ -19,7 +19,13 @@ class Posts extends React.Component {
         return response.json();
       })
       .then(data => {
-        const posts = data.map(item => new Post(item.id, item.title, item.body));
+        // Use custom simple English posts to replace the default Latin placeholder text
+        const customPosts = [
+          { id: 1, title: "My first blog post", body: "Hello everyone! This is my first simple blog post." },
+          { id: 2, title: "Learning React is fun", body: "React is very interesting. I like components and life cycles." },
+          { id: 3, title: "A nice sunny day", body: "Today the weather is very warm and pleasant outside." }
+        ];
+        const posts = customPosts.map(item => new Post(item.id, item.title, item.body));
         this.setState({ posts });
       })
       .catch(error => {
