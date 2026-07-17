@@ -5,7 +5,7 @@ test('renders student details and calculated score', () => {
   render(<App />);
   expect(screen.getByText(/Student Details:/i)).toBeInTheDocument();
   expect(screen.getByText(/Name:/i)).toBeInTheDocument();
-  expect(screen.getByText(/Shreya/i)).toBeInTheDocument();
+  expect(screen.getByText(/Mayank/i)).toBeInTheDocument();
   expect(screen.getByText(/School:/i)).toBeInTheDocument();
   expect(screen.getByText(/DAV Public School/i)).toBeInTheDocument();
   expect(screen.getByText(/Total:/i)).toBeInTheDocument();
