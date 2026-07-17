@@ -53,7 +53,7 @@ This repository contains the training exercises completed as part of the Cogniza
 
 ## Week 5 Exercises
 
-### React Basics 
+### React 
 - [Exercise 1: My First React Application](./week%205/myfirstreact)
 - [Exercise 2: Student Management Portal (Multiple Components)](./week%205/StudentApp)
 - [Exercise 3: Score Calculator Application (Functional Components & Styling)](./week%205/scorecalculatorapp)
