@@ -1,4 +1,4 @@
-# Cognizant Java FSE Training Portfolio
+# Cognizant Java FSE React
 
 This repository contains the training exercises completed as part of the Cognizant Java FSE React Deepskill Program, organized week-wise.
 
