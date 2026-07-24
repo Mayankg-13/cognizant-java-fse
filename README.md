@@ -59,3 +59,13 @@ This repository contains the training exercises completed as part of the Cogniza
 - [Exercise 3: Score Calculator Application (Functional Components & Styling)](./week%205/scorecalculatorapp)
 - [Exercise 4: Blog Application (Lifecycle Hooks & Fetch API)](./week%205/blogapp)
 - [Exercise 5: Cohort Tracker Dashboard (CSS Modules & Inline Styling)](./week%205/cohortstracker)
+
+## Week 6 Exercises
+
+### React & ES6
+- [Exercise 1: Cricket App (ES6 List Rendering & Array Destructuring)](./week%206/cricketapp)
+- [Exercise 2: Office Space Rental App (JSX & Inline CSS)](./week%206/officespacerentalapp)
+- [Exercise 3: Event Examples App (Event Handlers & SyntheticEvents)](./week%206/eventexamplesapp)
+- [Exercise 4: Ticket Booking App (Conditional Rendering & Element Variables)](./week%206/ticketbookingapp)
+- [Exercise 5: Blogger App (Lists, Keys & Multiple Conditional Rendering Styles)](./week%206/bloggerapp)
+
