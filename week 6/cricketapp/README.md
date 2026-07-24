@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# Week 6 - Exercise 1: Cricket App (ES6 Features in React)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Objectives & Core Concepts (Short Answers)
 
-## Available Scripts
+### 1. List the features of ES6
+- **Arrow Functions**: Concise syntax for writing functions.
+- **Classes**: Syntax sugar for prototype-based inheritance.
+- **Template Literals**: Multi-line strings and interpolation with `${}`.
+- **Destructuring Assignment**: Clean syntax to extract data from arrays and objects.
+- **Spread & Rest Operators**: Expand or collect arrays/objects (`...`).
+- **Let & Const**: Block-scoped variable declarations.
+- **Promises**: Native support for asynchronous programming.
+- **Modules**: Built-in import/export syntax.
 
-In the project directory, you can run:
+### 2. Explain JavaScript let
+- `let` is a block-scoped variable declaration keyword introduced in ES6. Variables declared with `let` cannot be redeclared in the same scope, and they are not initialized with `undefined` during hoisting (temporal dead zone).
 
-### `npm start`
+### 3. Identify the differences between var and let
+- **Scope**: `var` is function-scoped, whereas `let` is block-scoped.
+- **Redeclaration**: `var` variables can be redeclared within their scope; `let` variables will throw a syntax error.
+- **Hoisting**: `var` is hoisted and initialized as `undefined`; `let` is hoisted but not initialized.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 4. Explain JavaScript const
+- `const` is a block-scoped declaration used for variables whose values cannot be reassigned after declaration. It must be initialized immediately at the time of declaration. Note that object properties or array elements declared with `const` can still be mutated.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 5. Explain ES6 class fundamentals
+- ES6 classes are templates for creating objects. They encapsulate data (properties) and behavior (methods) in a structured syntax. Under the hood, they use prototype-based inheritance.
 
-### `npm test`
+### 6. Explain ES6 class inheritance
+- ES6 class inheritance allows one class (child class) to inherit properties and methods from another class (parent class) using the `extends` keyword. The subclass constructor must invoke `super()` to call the parent constructor.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 7. Define ES6 arrow functions
+- Arrow functions are a compact syntax for writing JavaScript functions using `=>`. They do not bind their own `this`, `arguments`, `super`, or `new.target`, which makes them ideal for callback functions.
 
-### `npm run build`
+### 8. Identify set(), map()
+- **`Set`**: A collection of unique values where duplicate values are automatically discarded.
+- **`Map`**: A collection of key-value pairs where keys can be of any data type, preserving insertion order.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Hands-On Lab Outcomes
+In this hands-on lab, we learned how to:
+- Use the `map()` method of ES6 to render lists of items in React.
+- Apply ES6 arrow functions for concise filtering logic.
+- Implement ES6 destructuring features (array destructuring) to extract player information.
+- Merge arrays using the ES6 spread/merge operator (`[...]`).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Output Screenshots
 
-### `npm run eject`
+### View: Flag = true (List of Players & Score Below 70)
+![Flag True](./cricketapp_flag_true.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### View: Flag = false (Odd/Even Players & Merged List)
+![Flag False](./cricketapp_flag_false.png)
