@@ -18,14 +18,7 @@
 
 ---
 
-## Prerequisites
-- Completed Hands-on ID: `Git-T03-HOL_001`.
-- Git Bash client installed and configured.
-- Local Git repository linked to remote GitHub repository.
 
-> **Note:** Please follow the steps for creating a free account in GitHub. Do not use Cognizant credentials to login to GitHub.
-
----
 
 ## Exercise Steps & Commands
 
