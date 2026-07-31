@@ -69,3 +69,9 @@ This repository contains the training exercises completed as part of the Cogniza
 - [Exercise 4: Ticket Booking App (Conditional Rendering & Element Variables)](./week%206/ticketbookingapp)
 - [Exercise 5: Blogger App (Lists, Keys & Multiple Conditional Rendering Styles)](./week%206/bloggerapp)
 
+## Week 7 Exercises
+
+### Git & Version Control
+- [Exercise 1: Git Configuration & Basic Commands](./week%207/Git_Commands_Notes.md)
+
+
