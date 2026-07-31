@@ -74,5 +74,6 @@ This repository contains the training exercises completed as part of the Cogniza
 ### Git & Version Control
 - [Exercise 1: Git Configuration & Basic Commands](./week%207/Git_Commands_Notes.md)
 - [Exercise 2: Implementing .gitignore to Ignore Unwanted Files](./week%207/Exercise%202/Git_Ignore_Notes.md)
+- [Exercise 3: Git Branching & Merging](./week%207/Exercise%203/Git_Branching_Notes.md)
 
 
