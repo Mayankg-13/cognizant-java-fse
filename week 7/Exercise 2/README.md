@@ -16,15 +16,6 @@
 
 ---
 
-## Prerequisites
-- Setting up Git environment.
-- Integrated `notepad++` (or default text editor) with Git.
-- Local Git repository and remote repository access on GitHub.
-
-> **Note:** Please follow the steps for creating a free account in GitHub. Do not use Cognizant credentials to login to GitHub.
-
----
-
 ## Exercise Steps & Commands
 
 ### Task Requirement
