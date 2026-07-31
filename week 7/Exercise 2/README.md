@@ -1,9 +1,20 @@
 # Exercise 2: Implementing .gitignore to Ignore Unwanted Files and Folders
 
-## Objectives
-- Explain `git ignore` concepts and functionality.
-- Explain how to ignore unwanted files and folders using `.gitignore`.
-- Implement `.gitignore` to prevent tracking of temporary, build, and log files.
+## Objectives & Detailed Explanation
+
+1. **Understand `.gitignore` Concept & Purpose**:
+   Learn how Git uses the `.gitignore` text file to exclude specific temporary, build-generated, or sensitive files from version control. This prevents unnecessary clutter in the repository and ensures only relevant source files are pushed to GitHub.
+
+2. **Ignore Unwanted Files by Extension (`*.log`)**:
+   Configure pattern matching rules in `.gitignore` using wildcards (such as `*.log`) to ensure all log files are automatically ignored regardless of where they are created in the project directory.
+
+3. **Ignore Entire Folders & Directories (`log/`)**:
+   Specify directory-level ignore rules (such as `log/`) to prevent an entire folder and all its contents from being tracked, staged, or committed by Git.
+
+4. **Verify Untracked Status with `git status`**:
+   Execute `git status` before and after creating `.gitignore` to confirm that specified files and folders are successfully filtered out of the untracked files list.
+
+---
 
 ## Prerequisites
 - Setting up Git environment.
