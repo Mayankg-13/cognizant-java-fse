@@ -76,5 +76,6 @@ This repository contains the training exercises completed as part of the Cogniza
 - [Exercise 2: Implementing .gitignore to Ignore Unwanted Files](./week%207/Exercise%202/Git_Ignore_Notes.md)
 - [Exercise 3: Git Branching & Merging](./week%207/Exercise%203/Git_Branching_Notes.md)
 - [Exercise 4: Git Merge Conflict Resolution](./week%207/Exercise%204/Git_Conflict_Resolution_Notes.md)
+- [Exercise 5: Git Cleanup and Remote Repository Synchronization](./week%207/Exercise%205/Git_Cleanup_and_Push_Notes.md)
 
 
